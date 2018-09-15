@@ -7,10 +7,6 @@
 
 
 using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
 
 namespace _04_string_read
 {
@@ -18,15 +14,28 @@ namespace _04_string_read
     {
         static void Main(string[] args)
         {
-            Console.Write("Input chars and last char enter point:\t");
-            string line = Console.ReadLine();
-            char chars;// = Console.ReadLine();
-            while (Console.Read() != '.')
+            char c = '\0';
+            int digit = 0;
+            int letter = 0;
+            int space = 0;
+            int punctuation = 0;
+            Console.Write("Enter string and last symbol must be point '.'\n");
+            while (c != '.')
             {
-                chars = Console.Read();
+                c = Convert.ToChar(Console.Read());
+                if (char.IsDigit(c))
+                    ++digit;
+                if (char.IsLetter(c))
+                    ++letter;
+                if (char.IsPunctuation(c))
+                    ++punctuation;
+                if (c == ' ') //(char.IsWhiteSpace(c))
+                    ++space;
             }
 
-            //Console.ReadLine();
+            Console.WriteLine($"\nDigit(s):\t{digit}\nLetter(s):\t{letter}\nPunctuation(s):\t{punctuation}\nSpace(s):\t{space}");
+
+            Console.ReadLine();
         }
     }
 }
